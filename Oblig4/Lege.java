@@ -25,11 +25,22 @@ public class Lege implements Comparable<Lege>  {
         return utSkrevedeResepter;
     } 
 
+    public void sjekkNarkotisk(Lege l, Legemiddler lm)throws UlovligUtskrift{
+
+        if (lm instanceof Narkotisk){
+            throw new UlovligUtskrift(l, lm);
+
+        }
+
+    }
 
 
-    public Hviteresepter skrivHviteresepter (Legemiddler legemiddler, Pasient pasient, int reit) {
+
+    public Hviteresepter skrivHviteresepter (Legemiddler legemiddler, Pasient pasient, int reit)throws UlovligUtskrift {
 
         Hviteresepter hvitresept = new Hviteresepter(legemiddler, this, pasient, reit);
+
+        sjekkNarkotisk(this, legemiddler);
 
         utSkrevedeResepter.leggTil(hvitresept);
         pasient.leggTil(hvitresept);
@@ -37,9 +48,10 @@ public class Lege implements Comparable<Lege>  {
         return hvitresept;
 
     }
-    public MilResept skrivMilresepter (Legemiddler legemiddler, Pasient pasient, int reit){
+    public MilResept skrivMilresepter (Legemiddler legemiddler, Pasient pasient, int reit)throws UlovligUtskrift{
 
         MilResept milResept = new MilResept(legemiddler, this, pasient);
+        sjekkNarkotisk(this, legemiddler);
 
         utSkrevedeResepter.leggTil(milResept);
         pasient.leggTil(milResept);
@@ -47,55 +59,41 @@ public class Lege implements Comparable<Lege>  {
         return milResept;
 
         }
+    
+    public P_resepter skrivPresepter (Legemiddler legemiddler, Pasient pasient, int reit)throws UlovligUtskrift {
 
+       P_resepter pResept = new P_resepter(legemiddler, this, pasient, reit);
+       sjekkNarkotisk(this, legemiddler);
 
-
-        
-    public void Gyldutskift(Lege l, Legemiddler lm){
-
-        if (l instanceof Spesialister && lm instanceof Narkotisk){
-
-
-
-    }
-
-
-    }
-    public P_resepter skrivPresepter (Legemiddler legemiddler, Pasient pasient, int reit) {
-
-        P_resepter pResept = new P_resepter(legemiddler, this, pasient, reit);
-
+    
         utSkrevedeResepter.leggTil(pResept);
         pasient.leggTil(pResept);
-        
+            
         return pResept;
-        
-    }
-
-    public Blaresepter skrivBlaaresepter (Legemiddler legemiddler, Pasient pasient, int reit) {
-
-        // if (Lege instanceof Spesialister && legemiddler instanceof Narkotisk){
-
-
-        Blaresepter blaresepter = new Blaresepter(legemiddler, this, pasient, reit);
-
-        utSkrevedeResepter.leggTil(blaresepter);
-        pasient.leggTil(blaresepter);
-        
-        return blaresepter;
-
+            
         }
+
+        public Blaresepter skrivBlaaresepter (Legemiddler legemiddler, Pasient pasient, int reit)throws UlovligUtskrift {
+
+            if (legemiddler instanceof Narkotisk && !(this instanceof  Spesialister)){
+                throw new UlovligUtskrift(this, legemiddler);
+
+            }  
+    
+            else{
+
+            Blaresepter blaresepter = new Blaresepter(legemiddler, this, pasient, reit);
         
-        
+                utSkrevedeResepter.leggTil(blaresepter);
+                pasient.leggTil(blaresepter);
+                
+                return blaresepter;
+
+            }
     }
+  
     
-
-    
-
-
-    
-
-
+ 
 }
 
 
