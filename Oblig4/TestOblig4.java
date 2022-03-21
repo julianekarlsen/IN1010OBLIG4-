@@ -2,15 +2,23 @@
 public class TestOblig4 {
 
    public static void main(String[] args) {
-    Prioritetskoe<Integer> testEn = new Prioritetskoe<>();
-	testEn.leggTil(4); 
-    testEn.leggTil(23);
-    testEn.leggTil(3);
-    testEn.leggTil(1);
-    testEn.leggTil(3);
-    testEn.leggTil(6);
 
-   System.out.println(testEn.hent()); 
+    Legesystemer legesystem = new Legesystemer();
+
+    legesystem.lesInnFil("Legedata.txt");
+
+
+
+        
+//     Prioritetskoe<Integer> testEn = new Prioritetskoe<>();
+// 	testEn.leggTil(4); 
+//     testEn.leggTil(23);
+//     testEn.leggTil(3);
+//     testEn.leggTil(1);
+//     testEn.leggTil(3);
+//     testEn.leggTil(6);
+
+//    System.out.println(testEn.hent()); 
     
 
 
@@ -20,7 +28,7 @@ public class TestOblig4 {
 
 
 
-    System.out.println(testEn);
+   // System.out.println(testEn);
     // System.out.println(testEn.stoerrelse());
 
     // testEn.fjern();

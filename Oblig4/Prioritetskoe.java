@@ -47,7 +47,6 @@ public class Prioritetskoe<T extends Comparable<T>> extends LenkeListe<T>{
 
     @Override
     public Iterator<T> iterator() {
-        // TODO Auto-generated method stub
         return null;
     }
 

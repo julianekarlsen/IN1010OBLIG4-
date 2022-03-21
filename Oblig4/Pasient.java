@@ -16,6 +16,10 @@ public class Pasient{
         pasientId = teller;
     }
 
+    public int hentId(){
+        return pasientId;
+    }
+
 
     public void leggTil(Resepter resepter){
 
