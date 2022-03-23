@@ -1,7 +1,6 @@
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
-
 import java.util.Iterator;
 
 
@@ -167,11 +166,11 @@ public class Legesystem extends Lenkeliste<Lege> {
             }
 
             if (valgtKommando.equals("2")){
-
+                kommando2(kommando);
             }
 
             if (valgtKommando.equals("3")){
-
+                
             }
 
             if (valgtKommando.equals("4")){
@@ -207,11 +206,10 @@ public class Legesystem extends Lenkeliste<Lege> {
      }
   }
 
-  public void kommando2(){
+  public void kommando2(Scanner kommando){
+        lesInnFil("Legedata.txt");
 
-    Scanner kommando = new Scanner(System.in);
-
-            System.out.println("Du valgte aa opprette et nytt element i systemet:)");
+            System.out.println("Du valgte aa opprette et nytt element i systemet:)"+ "\n");
             System.out.println("1 for aa opprette et legemiddel");
             System.out.println("2 for aa oppdrette en pasient");
             System.out.println("3 for aa oppdrette en resept");
@@ -220,47 +218,39 @@ public class Legesystem extends Lenkeliste<Lege> {
             String valgtKommando = kommando.nextLine();  
             System.out.println("Du valgte aa oppdrette: " + valgtKommando);
 
-            kommando.close();
-
 
 //nytt legemiddel!!---------------------------------------------------
 
             if (valgtKommando.equals("1")){
 
-                Scanner lmkommando = new Scanner(System.in);
 
                 System.out.println("Du valgte aa opprette et nytt legemiddel:)");
                 System.out.println("1 for aa opprette narkotisk");
                 System.out.println("2 for aa oppdrette vanlig");
                 System.out.println("3 for aa oppdrette vanedannende");
 
-                String valgLm = lmkommando.nextLine();
-                
-                lmkommando.close();
+                String valgLm = kommando.nextLine();
+                System.out.println("Du har valgt " + valgLm);
 
 //narkotisk
                 if(valgLm.equals("1")){
                     System.out.println("Du valgte aa oppdrette type narkotisk");
 
-                    Scanner navn = new Scanner(System.in);
+                    //Scanner navn = new Scanner(System.in);
                     System.out.println("Navn:");
-                    String valgtnavn = navn.nextLine();
-                    navn.close();
+                    String valgtnavn = kommando.nextLine();
 
-                    Scanner pris = new Scanner(System.in);
+                    //Scanner pris = new Scanner(System.in);
                     System.out.println("Pris:");
-                    int valgtPris = pris.nextInt();
-                    pris.close();
+                    int valgtPris = kommando.nextInt();
 
-                    Scanner virkestoff = new Scanner(System.in);
-                    System.out.println("Navn:");
-                    int valgtVs = navn.nextInt();
-                    virkestoff.close();
+                    //Scanner virkestoff = new Scanner(System.in);
+                    System.out.println("Virkestoff:");
+                    int valgtVs = kommando.nextInt();
 
-                    Scanner styrke = new Scanner(System.in);
-                    System.out.println("Navn:");
-                    int valgtStyrke = navn.nextInt();
-                    styrke.close();
+                   // Scanner styrke = new Scanner(System.in);
+                    System.out.println("Styrke:");
+                    int valgtStyrke = kommando.nextInt();
 
                     Narkotisk nyNarkotisk = new Narkotisk(valgtnavn, valgtPris, valgtVs, valgtStyrke);
 
@@ -269,20 +259,17 @@ public class Legesystem extends Lenkeliste<Lege> {
                 if(valgLm.equals("2")){
                     System.out.println("Du valgte aa oppdrette type vanlig");
 
-                    Scanner navn = new Scanner(System.in);
+                   // Scanner navn = new Scanner(System.in);
                     System.out.println("Navn:");
-                    String valgtnavn = navn.nextLine();
-                    navn.close();
+                    String valgtnavn = kommando.nextLine();
 
-                    Scanner pris = new Scanner(System.in);
+                    //Scanner pris = new Scanner(System.in);
                     System.out.println("Pris:");
-                    int valgtPris = pris.nextInt();
-                    pris.close();
+                    int valgtPris = kommando.nextInt();
 
-                    Scanner virkestoff = new Scanner(System.in);
-                    System.out.println("Navn:");
-                    int valgtVs = navn.nextInt();
-                    virkestoff.close();
+                   // Scanner virkestoff = new Scanner(System.in);
+                    System.out.println("Virkestoff:");
+                    int valgtVs = kommando.nextInt();
 
                     Vanlig nyVanlig = new Vanlig(valgtnavn, valgtPris, valgtVs);
 
@@ -290,27 +277,23 @@ public class Legesystem extends Lenkeliste<Lege> {
 
 // vanedannende
                 if(valgLm.equals("3")){
-                    System.out.println("Du valgte aa oppdrette narkotisk");
+                    System.out.println("Du valgte aa oppdrette vanedannende");
 
-                    Scanner navn = new Scanner(System.in);
+                  //  Scanner navn = new Scanner(System.in);
                     System.out.println("Navn:");
-                    String valgtnavn = navn.nextLine();
-                    navn.close();
+                    String valgtnavn = kommando.nextLine();
 
-                    Scanner pris = new Scanner(System.in);
+                 //   Scanner pris = new Scanner(System.in);
                     System.out.println("Pris:");
-                    int valgtPris = pris.nextInt();
-                    pris.close();
+                    int valgtPris = kommando.nextInt();
 
-                    Scanner virkestoff = new Scanner(System.in);
-                    System.out.println("Navn:");
-                    int valgtVs = navn.nextInt();
-                    virkestoff.close();
+                   // Scanner virkestoff = new Scanner(System.in);
+                    System.out.println("Virkestoff:");
+                    int valgtVs = kommando.nextInt();
 
-                    Scanner styrke = new Scanner(System.in);
-                    System.out.println("Navn:");
-                    int valgtStyrke = navn.nextInt();
-                    styrke.close();
+                  //  Scanner styrke = new Scanner(System.in);
+                    System.out.println("Styrke:");
+                    int valgtStyrke = kommando.nextInt();
 
                     Vanedannende nyvVanedannende = new Vanedannende(valgtnavn, valgtPris, valgtVs, valgtStyrke);
 
@@ -324,41 +307,62 @@ public class Legesystem extends Lenkeliste<Lege> {
 
                 System.out.println("Du har valgt aa lage en ny pasient");
 
-                Scanner navn = new Scanner(System.in);
                     System.out.println("Navn:");
-                    String valgtnavn = navn.nextLine();
-                    navn.close();
+                    String valgtnavn = kommando.nextLine();
+                    System.out.println("Du har valgt" + valgtnavn);
 
-                    Scanner fodelsNr = new Scanner(System.in);
-                    System.out.println("Navn:");
-                    String valgtfodelsNr = fodelsNr.nextLine();
-                    fodelsNr.close();
+
+
+                    System.out.println("Fodselsnummer:");
+                    String valgtfodelsNr = kommando.nextLine();
 
                     Pasient nyPasient = new Pasient(valgtnavn, valgtfodelsNr);
+                    pasientListe.leggTil(nyPasient);
+
+                    System.out.println(pasientListe);
             }
 
 //nytt resept!!---------------------------------------------------
 
             if (valgtKommando.equals("3")){
 
-
-
-                
                 System.out.println("Du har valgt aa lage en ny resept");
+// legemiddel   
+                System.out.println("---VELG ET LEGE MIDDEL---");
+                System.out.println(legemiddelListe);
 
-                Scanner legeMiddel = new Scanner(System.in);
-                System.out.println("Navn:");
-                String valgtLm = legeMiddel.nextLine();
+                System.out.println("Skriv et tall");
+                int valgtlm = kommando.nextInt();
 
-                                              // ikke finn paa nytt lm!!
-                legeMiddel.close();
+                Legemiddel legem = null;
 
-                    Scanner fodelsNr = new Scanner(System.in);
-                    System.out.println("Navn:");
-                    String valgtfodelsNr = fodelsNr.nextLine();
-                    fodelsNr.close();
 
-                    Pasient nyPasient = new Pasient(valgtnavn, valgtfodelsNr);
+                for (Legemiddel ilm : legemiddelListe){
+                    if(ilm.hentID() == valgtlm){
+                        legem = ilm;
+                    }
+                }
+                System.out.println("Du har valgt " + legem.hentNavn());
+
+//lege
+                System.out.println("---VELG EN LEGE ---");
+
+                for (Lege lege : legeListe){
+                    System.out.println(lege);
+
+                    }
+
+                System.out.println("Skriv navnet til legen");
+                String valgtL = kommando.nextLine();
+
+                Lege lege = null;
+
+                for (Lege l : legeListe){
+                    if(lege.henteUtNavn().equals(valgtL)){
+                        lege = l;
+                    }
+                }
+                System.out.println("Du har valgt " + legem.hentNavn());
 
             }
 

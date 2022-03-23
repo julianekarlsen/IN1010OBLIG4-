@@ -21,6 +21,11 @@ public class Pasient{
         reseptListe.leggTil(resept);
     }
 
+    public void reseptListe(){
+        System.out.println(reseptListe);
+
+    }
+
     public String toString(){
         return navn;
     }

@@ -6,6 +6,7 @@ public class Testing {
     Legesystem legesystem = new Legesystem();
  
     legesystem.kommandoLokke();
+
  
     //  legesystem.lesInnFil("Legedata.txt");
  
