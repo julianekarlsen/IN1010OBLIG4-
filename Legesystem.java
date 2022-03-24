@@ -170,7 +170,8 @@ public class Legesystem extends Lenkeliste<Lege> {
             }
 
             if (valgtKommando.equals("3")){
-                
+                kommando3();
+
             }
 
             if (valgtKommando.equals("4")){
@@ -219,10 +220,9 @@ public class Legesystem extends Lenkeliste<Lege> {
             System.out.println("Du valgte aa oppdrette: " + valgtKommando);
 
 
-//nytt legemiddel!!---------------------------------------------------
+//nytt legemiddel!!--------------------------------------------------------
 
             if (valgtKommando.equals("1")){
-
 
                 System.out.println("Du valgte aa opprette et nytt legemiddel:)");
                 System.out.println("1 for aa opprette narkotisk");
@@ -301,7 +301,7 @@ public class Legesystem extends Lenkeliste<Lege> {
                 }
             }
 
-//nytt pasient!!---------------------------------------------------
+//ny pasient!!---------------------------------------------------
 
             if (valgtKommando.equals("2")){
 
@@ -327,15 +327,29 @@ public class Legesystem extends Lenkeliste<Lege> {
             if (valgtKommando.equals("3")){
 
                 System.out.println("Du har valgt aa lage en ny resept");
+// type resept
+
+                System.out.println("Velg hvilken type resept");
+                System.out.println("1. Hvit");
+                System.out.println("2. Militaer");
+                System.out.println("3. P-respet");
+                System.out.println("4. Blaa");
+
+                int reseptType = kommando.nextInt();
+
+
 // legemiddel   
                 System.out.println("---VELG ET LEGE MIDDEL---");
-                System.out.println(legemiddelListe);
+                for (Legemiddel legemiddel : legemiddelListe){
+                    System.out.println(legemiddel);
+
+                    }
 
                 System.out.println("Skriv et tall");
                 int valgtlm = kommando.nextInt();
+                kommando.nextLine();
 
                 Legemiddel legem = null;
-
 
                 for (Legemiddel ilm : legemiddelListe){
                     if(ilm.hentID() == valgtlm){
@@ -350,25 +364,110 @@ public class Legesystem extends Lenkeliste<Lege> {
                 for (Lege lege : legeListe){
                     System.out.println(lege);
 
-                    }
+                }
 
                 System.out.println("Skriv navnet til legen");
-                String valgtL = kommando.nextLine();
+                String enLege = kommando.nextLine();
 
                 Lege lege = null;
 
-                for (Lege l : legeListe){
-                    if(lege.henteUtNavn().equals(valgtL)){
-                        lege = l;
+                 for (Lege l : legeListe){
+                    if(l.henteUtNavn().equals(enLege.trim())){
+                         lege = l;
+                     }
+                }
+                System.out.println("Du har valgt " + lege);
+
+//pasient
+                System.out.println("---VELG EN PASIENT ---");
+
+                for (Pasient pasient : pasientListe){
+                    System.out.println(pasient.hentPasientId() + ":" + pasient);
+
+                }
+
+                System.out.println("Skriv et tall");
+                int enPasient = kommando.nextInt();
+
+                Pasient pasient = null;
+
+                for (Pasient p : pasientListe){
+                    if(p.hentPasientId() == enPasient){
+                        pasient = p;
                     }
                 }
-                System.out.println("Du har valgt " + legem.hentNavn());
+                System.out.println("Du har valgt " + pasient);
+
+// reit     
+            System.out.println("---VELG ANTALL REIT---");
+
+            int reit = 0;
+
+            if(reseptType != 2){     //hvis det ikke er militar
+
+                System.out.println("Velg antall reit");
+                reit = kommando.nextInt();
+
+                System.out.println("Antall" + reit);
+            }
+            
+
+
+
+// oppdretter selve reseptene
+
+            if (reseptType == 1){
+                Hviteresepter nyResept = new Hviteresepter(legem, lege, pasient, reit);
+            }
+
+            if (reseptType == 2){
+                MilResept nyResept = new MilResept(legem, lege, pasient);
+            }
+
+            if (reseptType == 3){
+                PResept nyResept = new PResept(legem, lege, pasient, reit);
+            }
+
+            if (reseptType == 4){
+                Blaaresepter nyResept = new Blaaresepter(legem, lege, pasient, reit);
+            }
+
+            
+
+           
+            
+
+            }
+//----- LEGE
+
+            if (valgtKommando.equals("4")){
+
+                System.out.println("Du har valgt aa lage en ny lege");
+
+                    System.out.println("Navn:");
+                    String valgtnavn = kommando.nextLine();
+                    System.out.println("Du har valgt" + valgtnavn);
+
+                    System.out.println("Kontroll Id:(0 om du ikke er spesialist");
+                    String valgtKontrollid = kommando.nextLine();
+
+                    if(valgtKontrollid.equals("0")){
+                    Lege lege = new Lege(valgtnavn);
+                    legeListe.leggTil(lege);
+
+                    }else{
+                        Spesialist spesialist = new Spesialist(valgtnavn, valgtKontrollid);
+                        legeListe.leggTil(spesialist);
+
+                    }
+                    
+                    System.out.println(pasientListe);
+            }
+
 
             }
 
 
-      
-}
 
 public void kommando3(){
       
